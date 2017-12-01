@@ -8,9 +8,9 @@ $(document).ready(function() {
     doctorName.getName(nameInput);
   });
 
-  $('.new-doc-info').click(function(event) {
+  $('.title').click(function(event) {
     event.preventDefault();
-    let docName = $(event.target).text();
+    let docName = $(event.target).html();
     console.log("docName");
   })
 });

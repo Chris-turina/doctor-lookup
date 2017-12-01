@@ -9,8 +9,12 @@ export class Doctor {
   getName(name) {
     $.get(`https://api.betterdoctor.com/2016-03-01/doctors?limit=20&user_key=92eabac06f3099882483789a6b1b7ad9&name=${name}&query=&location=45.5231, -122.6765, 200`).then(function(responce) {
       console.log(`${name}`);
-      for (let i = 0; i < 20; i++){
-        $('.doctor-output').append(`<div class='new-doc-info'><p class='doc-name'>${responce.data[i].profile.first_name} ${responce.data[i].profile.last_name}</p></div>`);
+      for (let i = 0; i < responce.data.length; i++){
+        $('.doctor-output').append(`<div class='new-doc-info'> <img src="${responce.data[i].profile.image_url}" alt="image of ${responce.data[i].profile.first_name} ${responce.data[i].profile.last_name}"> <p class='doc-name'>${responce.data[i].profile.first_name} ${responce.data[i].profile.last_name}</p></div>`);
+        for (let j =0; j < responce.data[i].practices.length; j++) {
+          $('.doctor-output').append(`${responce.data[i].practices[j].visit_address.city}, ${responce.data[i].practices[j].visit_address.state} ${responce.data[i].practices[j].visit_address.street} ${responce.data[i].practices[j].visit_address.zip}`);
+
+        }
 
 
       };
