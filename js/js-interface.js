@@ -8,9 +8,9 @@ $(document).ready(function() {
     doctorName.getName(nameInput);
   });
 
-  $('.title').click(function(event) {
+  $("#symptom-button").click(function(event) {
     event.preventDefault();
-    let docName = $(event.target).html();
-    console.log("docName");
-  })
+    let symptomInput = $('#input-symptom').val();
+    doctorName.getSymptom(symptomInput);
+  });
 });
